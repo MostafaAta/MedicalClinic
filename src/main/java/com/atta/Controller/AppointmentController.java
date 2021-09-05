@@ -45,6 +45,12 @@ public class AppointmentController
 		return appointmentRepository.getAppointmentsByDate(dateConverted);
 	}
 
+	@GetMapping("/appointments/patient/{patientName}")
+	public List<Appointment> getAppointmentsByPatientName(@PathVariable(value = "patientName") String patientName) throws ResourceNotFoundException, ParseException
+	{
+		return appointmentRepository.getAppointmentsByPatientName(patientName);
+	}
+
 	@PostMapping("/appointments")
 	public Appointment createAppointment(@Valid @RequestBody Appointment appointment)
 	{

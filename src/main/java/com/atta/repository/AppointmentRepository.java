@@ -14,8 +14,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>
 	@Query("FROM Appointment a where a.date = date ORDER BY a.date DESC")
 	List<Appointment> getAppointmentsByDate(Date date);
 
-	@Query("FROM Appointment a left join Patient p on b.id = a.id where p.name like :searchName")
-	List<Appointment> getAppointmentsByName(String searchName);
+	@Query("FROM Appointment a left join Patient p on p.id = a.id where p.name like :searchName")
+	List<Appointment> getAppointmentsByPatientName(String searchName);
 
 
 }
